@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">POC</string>
+    <string name="facebook_app_id">246647122417012</string>
+    <string name="twitter_key">MM22GOK2Jn6UI6UTyqZdgfY7u</string>
+    <string name="twitter_secret_key">oD1dZ6Tpw59V5zzxZWYKYRbWYYThCpRcj4MVZYsb9ffJUPxN6T</string>
+    <string name="twitter_callback_url">http://poc.android.app</string>
+    <string name="twitter_oauth_verifier">oauth_verifier</string>
+    <string name="tweet_text_here">Tweet Text Here</string>
+    <string name="user_name">User Name</string>
+    <string name="share_with_twitter">Share with Twitter</string>
+    <string name="log_in_with_twitter">Log In with Twitter</string>
+</resources>
