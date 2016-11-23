@@ -49,10 +49,20 @@ public class LogInActivity extends AppCompatActivity {
     @BindView(R.id.button_share_feeds)
     public Button mBtnShareFeeds;
 
+    @BindView(R.id.button_whatsapp)
+    public Button mBtnSendWhatsapp;
+
+    @BindView(R.id.button_twitter)
+    public Button mBtnLogInWithTwitter;
+
+    @BindView(R.id.button_sharedPref)
+    public Button mBtnSharedPref;
+
+    @BindView(R.id.button_io)
+    public Button mBtnIo;
+
     @BindView(R.id.profile_picture)
     ImageView mPictureView;
-
-
 
 
     public CallbackManager mCallbackManager;
@@ -79,6 +89,12 @@ public class LogInActivity extends AppCompatActivity {
 
             Bundle parameters = new Bundle();
             parameters.putString("fields", "id,name,link,picture");
+
+            mBtnSendWhatsapp.setVisibility(View.GONE);
+            mBtnLogInWithTwitter.setVisibility(View.GONE);
+            mBtnSharedPref.setVisibility(View.GONE);
+            mBtnIo.setVisibility(View.GONE);
+
 
 
             final GraphRequest request=GraphRequest.newMyFriendsRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONArrayCallback() {
@@ -191,6 +207,16 @@ public class LogInActivity extends AppCompatActivity {
         startActivity(new Intent(this,TwitterActivity.class));
     }
 
+    @OnClick(R.id.button_sharedPref)
+    public void openSharedPrefDemo(){
+        startActivity(new Intent(this,PrefActivity.class));
+    }
+
+    @OnClick(R.id.button_io)
+    public void openIoOps(){
+        startActivity(new Intent(this,IOActivity.class));
+    }
+
     private void setupProfileTracker() {
         mProfilrTracker = new ProfileTracker() {
             @Override
@@ -242,7 +268,7 @@ public class LogInActivity extends AppCompatActivity {
 
         if (profile != null) {
             //Picasso.with(getApplicationContext()).load(profile.getProfilePictureUri(100,100)).into(mPictureView);
-            stringBuffer.append("Welcome" + profile.getName());
+            stringBuffer.append("Welcome " + profile.getName());
         }
         return stringBuffer.toString();
     }

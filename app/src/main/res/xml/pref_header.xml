@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
+    <header
+        android:icon="@drawable/ic_twitter"
+        android:fragment="com.example.synerzip.poc.PrefHeaderOne"
+        android:title="Header One"
+        android:summary="Summary of Header One"/>
+
+    <header
+        android:icon="@drawable/ic_twitter"
+        android:fragment="com.example.synerzip.poc.PrefHeaderTwo"
+        android:title="Header Two"
+        android:summary="Summary of Header Two"/>
+    <header
+        android:icon="@drawable/ic_facebook"
+        android:title="Intent">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="http://google.com" />
+    </header>
+
+</preference-headers>

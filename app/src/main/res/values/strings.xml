@@ -9,4 +9,30 @@
     <string name="user_name">User Name</string>
     <string name="share_with_twitter">Share with Twitter</string>
     <string name="log_in_with_twitter">Log In with Twitter</string>
+    <string name="show_pref">Show Preferences</string>
+    <string name="edit_pref">Edit Pref</string>
+    <string name="form_pref">Form Pref</string>
+    <string name="dependent_pref">Dependent Pref</string>
+    <string name="pref_listener">Pref Listener</string>
+    <string name="list_pref">List Pref</string>
+    <string name="pref_header">Header Pref</string>
+    <string name="enter_first_name">Enter first name</string>
+    <string name="enter_last_name">Enter last name</string>
+    <string name="changes_in_file">Changes in file</string>
+    <string name="save_values">Save Values</string>
+    <string name="shift_activity">Shift Activity</string>
+    <string name="log_out_from_twitter">Log Out</string>
+
+    <string-array name="city_names">
+        <item>New York</item>
+        <item>London</item>
+        <item>Washington</item>
+        <item>Mumbai</item>
+    </string-array>
+    <string-array name="city_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
 </resources>

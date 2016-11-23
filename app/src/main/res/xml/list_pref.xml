@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:key="citypref"
+        android:title="Select your city"
+        android:summary="Here you can make your choice "/>
+       <!-- android:entries="@array/city_names"
+        android:entryValues="@array/city_values"
+        android:defaultValue="1"></ListPreference>-->
+
+</PreferenceScreen>

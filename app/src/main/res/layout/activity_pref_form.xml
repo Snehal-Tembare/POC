@@ -7,36 +7,37 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.synerzip.poc.TwitterActivity">
+    tools:context="com.example.synerzip.poc.PrefFormActivity">
     <EditText
-        android:id="@+id/edit_tweet_content"
+        android:id="@+id/edit_select_tech"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/tweet_text_here"/>
+        android:hint="Select Technology"/>
+    <EditText
+        android:id="@+id/edit_no_of_news"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_select_tech"
+        android:hint="Enter no of News"/>
+
+
+    <Button
+        android:id="@+id/button_save_pref"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Pref"
+        android:layout_below="@id/edit_no_of_news"/>
+    <Button
+        android:id="@+id/button_show_pref"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show Pref"
+        android:layout_below="@id/button_save_pref"/>
     <TextView
-        android:id="@+id/txt_user_name"
+        android:id="@+id/text_pref_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edit_tweet_content" />
-    <Button
-        android:id="@+id/button_share_with_twitter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_user_name"
-        android:text="@string/share_with_twitter"/>
-
-    <Button
-        android:id="@+id/button_log_in_with_twitter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/log_in_with_twitter"
-        android:layout_below="@id/button_share_with_twitter"/>
-
-    <Button
-        android:id="@+id/btn_log_out_from_twitter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/log_out_from_twitter"
-        android:layout_below="@id/button_log_in_with_twitter"/>
+        android:layout_below="@id/button_show_pref"
+        />
 
 </RelativeLayout>

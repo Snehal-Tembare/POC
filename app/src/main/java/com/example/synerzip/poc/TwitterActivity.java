@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.InputStream;
@@ -33,8 +34,8 @@ public class TwitterActivity extends AppCompatActivity {
     @BindView(R.id.edit_tweet_content)
     public EditText mEdtTweetContent;
 
-    @BindView(R.id.edit_user_name)
-    public EditText mEdtUserName;
+    @BindView(R.id.txt_user_name)
+    public TextView mTxtUserName;
 
     @BindView(R.id.button_log_in_with_twitter)
     public Button mBtnLogIn;
@@ -67,7 +68,7 @@ public class TwitterActivity extends AppCompatActivity {
         mPref=getSharedPreferences(SHARED_PREF_FILE,0);
         boolean isLoggedIn= mPref.getBoolean("login_status",false);
         if (isLoggedIn){
-            mEdtUserName.setText(mPref.getString("user_name",""));
+            mTxtUserName.setText(mPref.getString("user_name",""));
             mBtnShare.setEnabled(true);
             mBtnLogIn.setEnabled(false);
         }
@@ -98,7 +99,7 @@ public class TwitterActivity extends AppCompatActivity {
             mTwitter=factory.getInstance();
 
             getRequestToken();
-            
+
 
         }else {
             mBtnLogIn.setEnabled(false);
@@ -131,7 +132,7 @@ public class TwitterActivity extends AppCompatActivity {
             try {
                 requestToken=mTwitter.getOAuthRequestToken();
                 if (requestToken!=null){
-                oAuth_url=requestToken.getAuthenticationURL();
+                    oAuth_url=requestToken.getAuthenticationURL();
                 }
 
             } catch (TwitterException e) {
@@ -156,10 +157,10 @@ public class TwitterActivity extends AppCompatActivity {
 //        super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode== Activity.RESULT_OK){
-                String verifier=data.getStringExtra("oauth_verifier");
+            String verifier=data.getStringExtra("oauth_verifier");
             Log.v(TAG,"verifier"+verifier);
             new GetUserDetails().execute(verifier);
-                    }
+        }
 
 
     }
@@ -186,9 +187,9 @@ public class TwitterActivity extends AppCompatActivity {
             mBtnLogIn.setEnabled(false);
             mBtnShare.setEnabled(true);
             if (s.equals("")){
-                mEdtUserName.setText("No user found");
+                mTxtUserName.setText("No user found");
             }else {
-                mEdtUserName.setText(s);
+                mTxtUserName.setText(s);
             }
         }
 

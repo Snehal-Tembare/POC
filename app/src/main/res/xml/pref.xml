@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="Select your Technology">
+        <CheckBoxPreference
+            android:key="techjava"
+            android:title="Java"
+            android:summary="Java Technolgy"
+            android:defaultValue="true"/>
+        <CheckBoxPreference
+            android:key="techandroid"
+            android:title="Android"
+            android:summary="Android Summary"
+            android:defaultValue="false"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Set The number of News">
+        <EditTextPreference
+            android:key="nokey"
+            android:title="Enter No Of News"
+            android:summary="This is yhe number of news"
+            android:defaultValue="Great News"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Select ringtone">
+        <RingtonePreference
+            android:key="keyring"
+            android:title="Select your ringtone"
+            android:summary="This is your ringtone"/>
+    </PreferenceCategory>
+    <PreferenceScreen
+        android:title="More option here"
+        android:summary="Sub screen with another pref screen">
+        <PreferenceCategory
+            android:title="One sub pref">
+            <CheckBoxPreference
+                android:key="subkey"
+                android:title="Wish to have news letter"
+                android:summary="Click for Yes"/>
+
+        </PreferenceCategory>
+        <PreferenceCategory
+            android:title="Two sub pref">
+            <EditTextPreference
+                android:key="subkeyedit"
+                android:title="In how many days"
+                android:summary="Enter your Choice"/>
+
+        </PreferenceCategory>
+
+
+    </PreferenceScreen>
+</PreferenceScreen>

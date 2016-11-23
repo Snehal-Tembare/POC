@@ -59,19 +59,27 @@ public class WhatsAppActivity extends AppCompatActivity {
             }
 
 
-            /* Intent to send users from list
+            /*To send message to particular number
+            Intent sendIntent = new Intent("android.intent.action.MAIN");
+            sendIntent.setComponent(new ComponentName("com.whatsapp","com.whatsapp.Conversation"));
+            sendIntent.putExtra(Intent.EXTRA_TEXT, PhoneNumberUtils.stripSeparators("919890104266")+"@s.whatsapp.net");
+            sendIntent.putExtra("sma_body", PhoneNumberUtils.stripSeparators("919890104266")+"@s.whatsapp.net");
+            startActivity(sendIntent);*/
+
+//             Intent to send users from list
             Intent intent=new Intent(Intent.ACTION_SEND);
-            */
-            Intent intent=new Intent(Intent.ACTION_SENDTO, Uri.parse(Uri.parse(String.valueOf(new StringBuilder("smsto:").append("+919766383837"))).toString()));
 
-            /* Put Extras not working with Intent.ACTION_SENDTo
+
+            /*Put Extras not working with Intent.ACTION_SENDTo
+            Intent intent=new Intent(Intent.ACTION_SENDTO, Uri.parse(Uri.parse(String.valueOf(new StringBuilder("smsto:").append("+919766383837"))).toString()));*/
+
             intent.putExtra("sms_body",mEdtWhatsAppContent.getText().toString());
-
             intent.putExtra(Intent.EXTRA_TEXT,mEdtWhatsAppContent.getText().toString());
             intent.setType("text/plain");
             intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
-            intent.setType("image/jpeg");*/
-             intent.setPackage("com.whatsapp");
+            intent.setType("image/jpeg");
+
+            intent.setPackage("com.whatsapp");
             startActivity(intent);
 
         } catch (PackageManager.NameNotFoundException e) {

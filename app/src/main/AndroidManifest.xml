@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -36,7 +36,20 @@
         </activity>
         <activity android:name=".WhatsAppActivity" />
         <activity android:name=".TwitterActivity" />
-        <activity android:name=".TwitterWebView"></activity>
+        <activity android:name=".TwitterWebView" />
+        <activity android:name=".PrefActivity" />
+        <activity android:name=".PrefActivityShow" />
+        <activity android:name=".PrefFormActivity" />
+        <activity android:name=".DependactPrefActivity" />
+        <activity android:name=".DependentPrefScreenActivity" />
+        <activity android:name=".PrefListenerActivity" />
+        <activity android:name=".ListenerActivity" />
+        <activity android:name=".ListPrefActivity" />
+        <activity android:name=".ListPref" />
+        <activity android:name=".LoadHeader" />
+        <activity android:name=".HeaderActivity" />
+        <activity android:name=".IOActivity" />
+        <activity android:name=".AssetsActivity"></activity>
     </application>
 
 </manifest>
