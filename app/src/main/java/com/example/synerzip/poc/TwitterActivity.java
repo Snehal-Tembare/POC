@@ -107,6 +107,20 @@ public class TwitterActivity extends AppCompatActivity {
 
 
         }
+    }
+
+    @OnClick(R.id.btn_log_out_from_twitter)
+    public void logoutFromTwitter(){
+
+        Log.v("Access token 1", String.valueOf(accessToken));
+
+        mTwitter.setOAuthAccessToken(null);
+        mTwitter.shutdown();
+    /*    final SessionManager<TwitterSession> sessionManager = getSessionManager();
+        if (sessionManager != null) {
+            sessionManager.clearActiveSession();
+        }*/
+        Log.v("Access token 2", String.valueOf(accessToken));
 
 
     }

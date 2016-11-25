@@ -33,7 +33,7 @@ public class IOActivity extends AppCompatActivity {
     public EditText mEdtContentToWrite;
 
     @BindView(R.id.txt_content_from_file)
-    public EditText mTxtContentFromFile;
+    public TextView mTxtContentFromFile;
 
     @BindView(R.id.btn_save_file)
     public Button mBtnSaveFile;
