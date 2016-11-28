@@ -51,7 +51,9 @@
         <activity android:name=".IOActivity" />
         <activity android:name=".AssetsActivity" />
         <activity android:name=".FacebookActivity" />
-        <activity android:name=".ActionBarActivity"></activity>
+        <activity android:name=".ActionBarActivity" />
+        <activity android:name=".AQueryActivity" />
+        <activity android:name=".JsonActivity"></activity>
     </application>
 
 </manifest>

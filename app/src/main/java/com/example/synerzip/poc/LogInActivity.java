@@ -65,6 +65,11 @@ public class LogInActivity extends AppCompatActivity {
         startActivity(new Intent(this,ActionBarActivity.class));
     }
 
+    @OnClick(R.id.btn_aquery)
+    public void openAQueryDemo(){
+        startActivity(new Intent(this,AQueryActivity.class));
+    }
+
 
 
 }
