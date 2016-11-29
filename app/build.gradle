@@ -32,6 +32,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            multiDexEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -71,4 +72,11 @@ dependencies {
     compile 'com.android.support:support-v4:23.4.0'
     testCompile 'junit:junit:4.12'
     apt 'com.jakewharton:butterknife-compiler:8.2.1'
+
+    compile 'com.google.android.gms:play-services-location:9.0.2'
+    compile 'com.google.android.gms:play-services-maps:9.0.2'
+
+    compile 'org.projectlombok:lombok:1.16.10'
+
+    compile 'com.subinkrishna:circularimageview:1.2.2'
 }

@@ -13,7 +13,19 @@
     <Button
         android:id="@+id/btn_get_json"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="@string/load_data"/>
+
+    <Button
+        android:id="@+id/btn_upload_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/upload_data"/>
+    <EditText
+        android:id="@+id/edt_upload_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_content_to_upload"/>
 
     <ListView
         android:id="@+id/listview"
