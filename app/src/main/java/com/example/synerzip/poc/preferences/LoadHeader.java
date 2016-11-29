@@ -1,6 +1,8 @@
-package com.example.synerzip.poc;
+package com.example.synerzip.poc.preferences;
 
 import android.preference.PreferenceActivity;
+
+import com.example.synerzip.poc.R;
 
 import java.util.List;
 

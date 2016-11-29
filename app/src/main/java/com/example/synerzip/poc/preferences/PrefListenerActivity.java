@@ -1,4 +1,4 @@
-package com.example.synerzip.poc;
+package com.example.synerzip.poc.preferences;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.synerzip.poc.ListenerActivity;
+import com.example.synerzip.poc.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

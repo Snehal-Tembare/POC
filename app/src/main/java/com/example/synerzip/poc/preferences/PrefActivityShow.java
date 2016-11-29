@@ -1,4 +1,4 @@
-package com.example.synerzip.poc;
+package com.example.synerzip.poc.preferences;
 
 import android.app.Activity;
 import android.os.Bundle;

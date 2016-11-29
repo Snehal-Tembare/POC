@@ -2,13 +2,13 @@
 <preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
     <header
         android:icon="@drawable/ic_twitter"
-        android:fragment="com.example.synerzip.poc.PrefHeaderOne"
+        android:fragment="com.example.synerzip.poc.preferences.PrefHeaderOne"
         android:title="Header One"
         android:summary="Summary of Header One"/>
 
     <header
         android:icon="@drawable/ic_twitter"
-        android:fragment="com.example.synerzip.poc.PrefHeaderTwo"
+        android:fragment="com.example.synerzip.poc.preferences.PrefHeaderTwo"
         android:title="Header Two"
         android:summary="Summary of Header Two"/>
     <header

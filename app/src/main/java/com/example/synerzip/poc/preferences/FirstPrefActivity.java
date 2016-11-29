@@ -1,7 +1,9 @@
-package com.example.synerzip.poc;
+package com.example.synerzip.poc.preferences;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
+
+import com.example.synerzip.poc.R;
 
 /**
  * Created by Snehal Tembare on 16/11/16.

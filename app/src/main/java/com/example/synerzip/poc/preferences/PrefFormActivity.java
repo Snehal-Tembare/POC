@@ -1,10 +1,12 @@
-package com.example.synerzip.poc;
+package com.example.synerzip.poc.preferences;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.synerzip.poc.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

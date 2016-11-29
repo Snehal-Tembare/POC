@@ -1,4 +1,4 @@
-package com.example.synerzip.poc;
+package com.example.synerzip.poc.preferences;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -10,6 +10,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.synerzip.poc.HeaderActivity;
+import com.example.synerzip.poc.ListPrefActivity;
+import com.example.synerzip.poc.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
