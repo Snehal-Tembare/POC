@@ -59,5 +59,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="AQuery Demo" />
+
+        <Button
+            android:id="@+id/btn_service"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Service Demo" />
     </LinearLayout>
 </ScrollView>

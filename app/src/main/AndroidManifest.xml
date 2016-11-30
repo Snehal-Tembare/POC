@@ -53,7 +53,10 @@
         <activity android:name=".FacebookActivity" />
         <activity android:name=".ActionBarActivity" />
         <activity android:name=".AQueryActivity" />
-        <activity android:name=".JsonActivity"></activity>
+        <activity android:name=".JsonActivity" />
+        <activity android:name=".ServiceActivity"></activity>
+
+        <service android:name=".services.LocalService"></service>
     </application>
 
 </manifest>

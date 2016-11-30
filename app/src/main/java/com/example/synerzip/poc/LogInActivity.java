@@ -72,6 +72,11 @@ public class LogInActivity extends AppCompatActivity {
         startActivity(new Intent(this,AQueryActivity.class));
     }
 
+    @OnClick(R.id.btn_service)
+    public void openServiceDemo(){
+        startActivity(new Intent(this,ServiceActivity.class));
+    }
+
 
 
 }
