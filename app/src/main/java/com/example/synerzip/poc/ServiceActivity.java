@@ -26,7 +26,6 @@ public class ServiceActivity extends Activity {
         Intent intent=new Intent(this, LocalService.class);
         intent.putExtra("counter",2);
         startService(intent);
-
     }
 
     @OnClick(R.id.btn_stop_service)

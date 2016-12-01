@@ -65,7 +65,6 @@ public class LocalService extends Service{
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
             }
             return "Done with this...!!!";
         }
@@ -89,7 +88,7 @@ public class LocalService extends Service{
 
 //  START_STICKY--> Service restarted --> Intent lost
 //  START_NOT_STICKY--> Service not restarted
-    //START_REDELIVER_INTENT-->Service restarted--> intent Redeliverd
+//    START_REDELIVER_INTENT-->Service restarted--> intent Redeliverd
 
 
 }
