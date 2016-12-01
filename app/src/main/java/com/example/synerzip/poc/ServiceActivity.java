@@ -24,6 +24,7 @@ public class ServiceActivity extends Activity {
     public void startService(){
         Log.i(TAG,"startService");
         Intent intent=new Intent(this, LocalService.class);
+        intent.putExtra("counter",2);
         startService(intent);
 
     }
