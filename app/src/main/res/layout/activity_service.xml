@@ -11,7 +11,16 @@
     android:orientation="vertical"
     android:gravity="center_horizontal|center_vertical"
     tools:context="com.example.synerzip.poc.ServiceActivity">
-
+    <TextView
+        android:id="@+id/txt_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/common_dimens_20"/>
+<EditText
+    android:id="@+id/edt_enter_fact_no"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Enter number"/>
     <Button
         android:id="@+id/btn_start_service"
         android:layout_width="match_parent"
@@ -23,5 +32,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Stop Service"/>
+
+    <Button
+        android:id="@+id/btn_cal_fact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calculate Factorial"
+        android:enabled="false"/>
 
 </LinearLayout>

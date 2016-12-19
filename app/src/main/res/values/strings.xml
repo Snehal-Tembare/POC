@@ -45,4 +45,5 @@
     <string name="google_key">AIzaSyAhaD4HwgofkA2_9Z7fLbGB1V8Shi-S7do</string>
     <string name="upload_data">Upload Data</string>
     <string name="enter_content_to_upload">Enter data to Upload</string>
+    <string name="select_image">Select Image from Gallary</string>
 </resources>

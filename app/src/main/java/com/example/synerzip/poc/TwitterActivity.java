@@ -61,11 +61,12 @@ public class TwitterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_twitter);
         ButterKnife.bind(this);
+        mPref=getSharedPreferences(SHARED_PREF_FILE,0);
         initiTwitterConfigs();
 
         mProgressDialog=new ProgressDialog(this);
 
-        mPref=getSharedPreferences(SHARED_PREF_FILE,0);
+
         boolean isLoggedIn= mPref.getBoolean("login_status",false);
         if (isLoggedIn){
             mTxtUserName.setText(mPref.getString("user_name",""));
@@ -114,15 +115,20 @@ public class TwitterActivity extends AppCompatActivity {
 
         Log.v("Access token 1", String.valueOf(accessToken));
 
-        mTwitter.setOAuthAccessToken(null);
-        mTwitter.shutdown();
+        /*mTwitter.setOAuthAccessToken(null);
+        mTwitter.shutdown();*/
+
     /*    final SessionManager<TwitterSession> sessionManager = getSessionManager();
         if (sessionManager != null) {
             sessionManager.clearActiveSession();
         }*/
-        Log.v("Access token 2", String.valueOf(accessToken));
 
+        SharedPreferences.Editor editor = mPref.edit();
+        editor.remove("access_token");
+        editor.remove("token_secret");
+        editor.remove("oauth_verifier");
 
+        editor.commit();
     }
 
     @OnClick(R.id.button_share_with_twitter)
@@ -152,6 +158,8 @@ public class TwitterActivity extends AppCompatActivity {
             } catch (TwitterException e) {
                 e.printStackTrace();
             }
+
+            Log.v("Twitter URL",oAuth_url);
             return oAuth_url;
         }
 
@@ -159,7 +167,7 @@ public class TwitterActivity extends AppCompatActivity {
         protected void onPostExecute(String url) {
             super.onPostExecute(url);
             Toast.makeText(getApplicationContext(),"Going to webview",Toast.LENGTH_SHORT).show();
-            Log.i(TAG,"Url is"+url);
+            Log.v(TAG,"Url is "+url);
             final Intent intent=new Intent(TwitterActivity.this,TwitterWebView.class);
             intent.putExtra(TwitterWebView.EXTRA_URL,url);
             startActivityForResult(intent,WEBVIEW_REQUEST_CODE);
@@ -216,18 +224,7 @@ public class TwitterActivity extends AppCompatActivity {
                 user=mTwitter.showUser(user_id);
                 if (user!=null) {
                     username = user.getName();
-
-
-                    SharedPreferences.Editor editor = mPref.edit();
-
-                    editor.putString("access_token", accessToken.getToken());
-                    editor.putString("token_secret", accessToken.getTokenSecret());
-                    editor.putBoolean("login_status", true);
-                    editor.putString("user_name", username);
-                    editor.commit();
                 }
-
-
             } catch (TwitterException e) {
                 e.printStackTrace();
             }
@@ -236,12 +233,21 @@ public class TwitterActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        SharedPreferences.Editor editor = mPref.edit();
+        editor.remove("access_token");
+        editor.remove("token_secret");
+        editor.commit();
+
+    }
+
     private class TwitterShare extends AsyncTask<String,Void,Void>{
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
             mProgressDialog.setTitle("Status...");
             mProgressDialog.setMessage("Tweet is uploading...");
             mProgressDialog.setIndeterminate(true);

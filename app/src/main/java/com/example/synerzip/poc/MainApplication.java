@@ -1,5 +1,6 @@
 package com.example.synerzip.poc;
 
+
 import android.app.Application;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -14,15 +15,13 @@ public class MainApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
-
         try {
             PackageInfo packageInfo=getPackageManager().getPackageInfo("com.example.synerzip.poc", PackageManager.GET_SIGNATURES);
 
             for (Signature signature:packageInfo.signatures){
                 MessageDigest md=MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
-                Log.i("Hash Key", Base64.encodeToString(md.digest(),Base64.DEFAULT));
+                Log.v("Hash Key", Base64.encodeToString(md.digest(),Base64.DEFAULT));
             }
 
         } catch (PackageManager.NameNotFoundException e) {

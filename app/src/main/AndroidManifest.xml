@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+
     <application
         android:name=".MainApplication"
         android:allowBackup="true"
@@ -54,9 +55,12 @@
         <activity android:name=".ActionBarActivity" />
         <activity android:name=".AQueryActivity" />
         <activity android:name=".JsonActivity" />
-        <activity android:name=".ServiceActivity"></activity>
+        <activity android:name=".ServiceActivity"/>
 
-        <service android:name=".services.LocalService"></service>
+        <service android:name=".services.LocalService"/>
+        <service android:name=".services.MyIntentService"/>
+        <service android:name=".services.RemoteService"/>
+        <service android:name=".services.MyServiceWithCallBack"/>
     </application>
 
 </manifest>
