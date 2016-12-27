@@ -8,13 +8,23 @@ import android.content.pm.Signature;
 import android.util.Base64;
 import android.util.Log;
 
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import io.fabric.sdk.android.Fabric;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class MainApplication extends Application {
+
+    // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
+    private static final String TWITTER_KEY = "MM22GOK2Jn6UI6UTyqZdgfY7u";
+    private static final String TWITTER_SECRET = "oD1dZ6Tpw59V5zzxZWYKYRbWYYThCpRcj4MVZYsb9ffJUPxN6T";
+
     @Override
     public void onCreate() {
         super.onCreate();
+        TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
+        Fabric.with(this, new Twitter(authConfig));
         try {
             PackageInfo packageInfo=getPackageManager().getPackageInfo("com.example.synerzip.poc", PackageManager.GET_SIGNATURES);
 

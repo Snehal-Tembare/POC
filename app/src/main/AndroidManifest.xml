@@ -6,7 +6,20 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.RECEIVE_WAP_PUSH" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
+    <permission
+        android:name="com.example.synerzip.poc.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.example.synerzip.poc.permission.C2D_MESSAGE" />
 
     <application
         android:name=".MainApplication"
@@ -15,6 +28,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -28,7 +44,7 @@
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
-        <activity android:name=".LogInActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,7 +52,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".WhatsAppActivity" />
-        <activity android:name=".TwitterActivity" />
         <activity android:name=".TwitterWebView" />
         <activity android:name=".preferences.PrefActivity" />
         <activity android:name=".preferences.PrefActivityShow" />
@@ -55,12 +70,62 @@
         <activity android:name=".ActionBarActivity" />
         <activity android:name=".AQueryActivity" />
         <activity android:name=".JsonActivity" />
-        <activity android:name=".ServiceActivity"/>
+        <activity android:name=".services.ServiceMenuActivity" />
 
-        <service android:name=".services.LocalService"/>
-        <service android:name=".services.MyIntentService"/>
-        <service android:name=".services.RemoteService"/>
-        <service android:name=".services.MyServiceWithCallBack"/>
+        <service android:name=".services.LocalService" />
+        <service android:name=".services.MyIntentService" />
+        <service
+            android:name=".services.RemoteServiceWithAIDL"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.synerzip.poc.services.RemoteServiceWithAIDL" />
+            </intent-filter>
+        </service>
+        <service android:name=".services.MyServiceWithCallBack" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="f38f09df11900d522cdf7f470824ba3bd98be9ad" />
+
+        <activity android:name=".Twitter" />
+        <activity android:name=".services.LocalServiceActivity" />
+        <activity android:name=".services.IntentServiceActivity" />
+        <activity android:name=".services.ServiceCallBackActivity" />
+        <activity android:name=".services.RemoteServiceAIDLActivity" />
+        <activity android:name=".services.IPCActivity" />
+        <activity
+            android:name=".services.ServiceWithBindActivity"
+            android:label="ServiceWithBindActivity" />
+
+        <service android:name=".services.MyServiceWithBinder" />
+
+        <activity android:name=".location.LocationActivity" />
+
+        <!--<receiver
+            android:name=".CustomGcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="com.example.synerzip.poc" />
+            </intent-filter>
+        </receiver>-->
+
+        <activity android:name=".gcm.GCMActivity"></activity>
+
+        <service
+            android:name=".gcm.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+       <!-- <service
+            android:name=".gcm.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>-->
     </application>
 
 </manifest>

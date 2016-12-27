@@ -46,4 +46,9 @@
     <string name="upload_data">Upload Data</string>
     <string name="enter_content_to_upload">Enter data to Upload</string>
     <string name="select_image">Select Image from Gallary</string>
+    <string name="finding_location">Finding Location</string>
+
+    <string name="gcm_project_key">664628621711</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>

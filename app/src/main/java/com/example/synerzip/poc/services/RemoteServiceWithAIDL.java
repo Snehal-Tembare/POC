@@ -12,16 +12,15 @@ import android.widget.Toast;
 
 import com.example.synerzip.poc.MyAidlInterface;
 
+
 /**
- * Created by Snehal Tembare on 21/12/16.
+ * Created by Snehal Tembare on 5/12/16.
  * Copyright © 2016 Synerzip. All rights reserved
  */
 
-public class RemoteService extends Service {
-    private static final String TAG="RemoteService";
-     public int start=0,end=0;
-
-    private final IBinder binder=new MyBinder();
+public class RemoteServiceWithAIDL extends Service {
+    private static final String TAG="RemoteServiceWithAIDL";
+   // public int start=0,end=0;
 
     public int calFactorial(int a){
         int fact=1;
@@ -31,12 +30,17 @@ public class RemoteService extends Service {
         return fact;
     }
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Log.v(TAG,"onCreate");
+    }
 
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
 
-//        Toast.makeText(getApplicationContext(),"onBind called",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"onBind called",Toast.LENGTH_SHORT).show();
         Log.i(TAG,"onBind");
         return new MyAidlInterface.Stub(){
 
@@ -66,8 +70,8 @@ public class RemoteService extends Service {
         @Override
         protected String doInBackground(Integer... params) {
             Log.i(TAG,"doInBackground");
-            int start=params[0];
-            while(start<end){
+//            int start=params[0];
+            /*while(start<end){
 
                 try {
                     publishProgress("Counter now is "+start);
@@ -76,7 +80,7 @@ public class RemoteService extends Service {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            }
+            }*/
             return "Done with this...!!!";
         }
 
@@ -96,12 +100,4 @@ public class RemoteService extends Service {
             stopSelf();
         }
     }
-
-    public class MyBinder extends Binder {
-
-        public  RemoteService getService(){
-            return RemoteService.this;
-        }
-    }
 }
-

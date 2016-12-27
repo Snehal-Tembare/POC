@@ -12,7 +12,7 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context="com.example.synerzip.poc.LogInActivity">
+        tools:context="com.example.synerzip.poc.MainActivity">
 
         <Button
             android:id="@+id/btn_log_in_with_facebook"
@@ -29,12 +29,12 @@
             android:drawableLeft="@drawable/ic_whats_app"
             android:text="Share with Whats app" />
 
-        <Button
-            android:id="@+id/button_twitter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_twitter"
-            android:text="Share with Twitter" />
+        <!--<Button-->
+            <!--android:id="@+id/button_twitter"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:drawableLeft="@drawable/ic_twitter"-->
+            <!--android:text="Share with Twitter" />-->
 
         <Button
             android:id="@+id/button_sharedPref"
@@ -65,5 +65,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Service Demo" />
+
+        <Button
+            android:id="@+id/btn_twitter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Twitter Demo" />
+
+        <Button
+            android:id="@+id/btn_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Location Demo" />
+
+        <Button
+            android:id="@+id/btn_gcm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GCM Demo" />
     </LinearLayout>
 </ScrollView>

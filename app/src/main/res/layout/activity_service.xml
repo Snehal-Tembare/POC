@@ -4,40 +4,38 @@
     android:id="@+id/activity_service"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
     android:gravity="center_horizontal|center_vertical"
-    tools:context="com.example.synerzip.poc.ServiceActivity">
-    <TextView
-        android:id="@+id/txt_msg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/common_dimens_20"/>
-<EditText
-    android:id="@+id/edt_enter_fact_no"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Enter number"/>
-    <Button
-        android:id="@+id/btn_start_service"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Start Service"/>
+    android:orientation="vertical"
+    tools:context="com.example.synerzip.poc.services.ServiceMenuActivity">
 
     <Button
-        android:id="@+id/btn_stop_service"
+        android:id="@+id/btn_local_service"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Stop Service"/>
+        android:text="Local Service"/>
 
     <Button
-        android:id="@+id/btn_cal_fact"
+        android:id="@+id/btn_ipc_activity_service"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Calculate Factorial"
-        android:enabled="false"/>
+        android:text="IPC Service(RR)"/>
+
+    <Button
+        android:id="@+id/btn_service_with_bind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Remote Service(IPC bind)"/>
+
+    <Button
+        android:id="@+id/btn_aidl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Remote Service(AIDL)"/>
+
+    <Button
+        android:id="@+id/btn_service_callback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Service(CallBack)"/>
 
 </LinearLayout>

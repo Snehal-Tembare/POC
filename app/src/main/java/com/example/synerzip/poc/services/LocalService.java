@@ -20,32 +20,33 @@ import android.widget.Toast;
 public class LocalService extends Service{
 
     private final String TAG="LocalService";
-
+    Counter cc=new Counter();
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.i(TAG,"onCreate");
+        Log.v(TAG,"onCreate");
     }
 
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        Log.i(TAG,"onBind");
+        Log.v(TAG,"onBind");
         return null;
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.i(TAG,"onDestroy");
+        Log.v(TAG,"onDestroy");
+        cc.cancel(true);
+       // Thread.interrupted();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.i(TAG,"***onStartCommand "+"ID"+startId);
+        Log.v(TAG,"***onStartCommand "+"ID"+startId);
         int count=intent.getIntExtra("counter",0);
-        new Counter().execute(count);
-
+        cc.execute(count);
         return START_STICKY;
     }
 
@@ -54,7 +55,7 @@ public class LocalService extends Service{
 
         @Override
         protected String doInBackground(Integer... params) {
-            Log.i(TAG,"doInBackground");
+            Log.v(TAG,"doInBackground");
             int start=params[0];
             while(start<10){
 
@@ -65,7 +66,13 @@ public class LocalService extends Service{
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                if (isCancelled()){
+                    Thread.interrupted();
+                    break;
+                }
             }
+
+
             return "Done with this...!!!";
         }
 
@@ -73,14 +80,14 @@ public class LocalService extends Service{
         @Override
         protected void onProgressUpdate(String... values) {
             super.onProgressUpdate(values);
-            Log.i(TAG,"onProgressUpdate");
+            Log.v(TAG,"onProgressUpdate");
             Toast.makeText(getApplicationContext(),values[0],Toast.LENGTH_SHORT).show();
         }
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            Log.i(TAG,"onPostExecute");
+            Log.v(TAG,"onPostExecute");
             Toast.makeText(getApplicationContext(),s,Toast.LENGTH_SHORT).show();
             stopSelf();
         }
