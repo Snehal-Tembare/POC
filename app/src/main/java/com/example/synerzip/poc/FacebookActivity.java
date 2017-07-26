@@ -1,6 +1,9 @@
 package com.example.synerzip.poc;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -66,9 +69,20 @@ public class FacebookActivity extends AppCompatActivity {
         public void onSuccess(final LoginResult loginResult) {
             Log.e("Facebook", "onSuccess");
             accessToken = loginResult.getAccessToken();
+            Log.v("onSuccess","accessToken"+loginResult.getAccessToken().getToken());
+            Log.v("onSuccess","date expires"+loginResult.getAccessToken().getExpires());
+            Log.v("onSuccess","permissions"+loginResult.getAccessToken().getPermissions());
+            Log.v("onSuccess","getLastRefresh"+loginResult.getAccessToken().getLastRefresh());
+
+            AccessToken.refreshCurrentAccessTokenAsync();
+
             Profile profile = Profile.getCurrentProfile();
-            Log.d("Uri", String.valueOf(profile.getLinkUri() + " " + profile.getProfilePictureUri(50, 50)));
-            getUserProfileInfo(profile);
+            if (profile != null) {
+                if (profile.getLinkUri() != null) {
+                    Log.d("Uri", String.valueOf(profile.getLinkUri() + " " + profile.getProfilePictureUri(50, 50)));
+                }
+                getUserProfileInfo(profile);
+            }
 
             String[] ids = null;
             String[] names = null;
@@ -166,19 +180,27 @@ public class FacebookActivity extends AppCompatActivity {
         setContentView(R.layout.activity_facebook);
         ButterKnife.bind(this);
 
-        aquery = new AQuery(this);
 
-        mLoginButton.setCompoundDrawables(null, null, null, null);
-        mLoginButton.setReadPermissions("user_friends", "email", "public_profile");
-        mLoginButton.registerCallback(mCallbackManager, mFacebookCallback);
+        ConnectivityManager cm = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+        if (isConnected) {
+            aquery = new AQuery(this);
 
-        shareDialog = new ShareDialog(this);
+            mLoginButton.setCompoundDrawables(null, null, null, null);
+            mLoginButton.setReadPermissions("user_friends", "email", "public_profile");
+            mLoginButton.registerCallback(mCallbackManager, mFacebookCallback);
 
-        setupTokenTracker();
-        setupProfileTracker();
+            shareDialog = new ShareDialog(this);
 
-        mAccesstokenTracker.startTracking();
-        mProfilrTracker.startTracking();
+            setupTokenTracker();
+            setupProfileTracker();
+
+            mAccesstokenTracker.startTracking();
+            mProfilrTracker.startTracking();
+        } else {
+            Toast.makeText(getApplicationContext(), "Check internet connection", Toast.LENGTH_SHORT).show();
+        }
 
 
     }
@@ -187,7 +209,7 @@ public class FacebookActivity extends AppCompatActivity {
         mProfilrTracker = new ProfileTracker() {
             @Override
             protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
-                Log.d("CurrentProfile", String.valueOf(currentProfile));
+                Log.d("CurrentProfile", "" + currentProfile);
                 if (currentProfile != null) {
                     mTxtInfo.setText(getUserProfileInfo(currentProfile));
 //                Picasso.with(getApplicationContext()).load(currentProfile.getProfilePictureUri(100,100)).into(mPictureView);
@@ -208,7 +230,7 @@ public class FacebookActivity extends AppCompatActivity {
         mAccesstokenTracker = new AccessTokenTracker() {
             @Override
             protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
-                Log.d("CurrentToken", String.valueOf(currentAccessToken));
+                Log.d("CurrentToken", "" + currentAccessToken);
                 if (currentAccessToken != null) {
                     mBtnLogIn.setText("LogOut");
                     mBtnShareFeeds.setVisibility(View.VISIBLE);
@@ -257,8 +279,12 @@ public class FacebookActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        mAccesstokenTracker.stopTracking();
-        mProfilrTracker.stopTracking();
+        if (mAccesstokenTracker != null) {
+            mAccesstokenTracker.stopTracking();
+        }
+        if (mProfilrTracker != null) {
+            mProfilrTracker.stopTracking();
+        }
     }
 
     @Override

@@ -51,4 +51,7 @@
     <string name="gcm_project_key">664628621711</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="location_permission_denied">Location permission denied</string>
+    <string name="permission_required_toast">Permission required</string>
+    <string name="permission_rationale_location">permission_rationale_location</string>
 </resources>

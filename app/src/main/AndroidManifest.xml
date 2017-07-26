@@ -3,6 +3,7 @@
     package="com.example.synerzip.poc">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -34,6 +35,9 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDKRoU-pFYaIddvtr7TvoCq_vk1iTwmgUo" />
 
         <provider
             android:name="com.facebook.FacebookContentProvider"
@@ -101,7 +105,8 @@
 
         <activity android:name=".location.LocationActivity" />
 
-        <!--<receiver
+        <!--
+        <receiver
             android:name=".CustomGcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
@@ -109,23 +114,26 @@
 
                 <category android:name="com.example.synerzip.poc" />
             </intent-filter>
-        </receiver>-->
+        </receiver>
+        -->
 
-        <activity android:name=".gcm.GCMActivity"></activity>
+        <activity android:name=".gcm.GCMActivity" />
 
-        <service
-            android:name=".gcm.MyFirebaseMessagingService">
+        <service android:name=".gcm.MyFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-       <!-- <service
+        <!--
+        <service
             android:name=".gcm.MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
-        </service>-->
+        </service>
+        -->
+        <activity android:name=".location.MyLocationDemoActivity"></activity>
     </application>
 
 </manifest>

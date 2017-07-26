@@ -16,18 +16,33 @@
         android:id="@+id/edt_lattitude"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
         android:hint="Enter lattitude"/>
     <EditText
         android:id="@+id/edt_longitude"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
         android:hint="Enter longitude"/>
+
+    <EditText
+        android:id="@+id/edt_place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="Enter Place Name"/>
 
     <Button
         android:id="@+id/btn_find_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Find Location"/>
+
+    <Button
+        android:id="@+id/btn_lat_long"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Find Location by name"/>
 
     <TextView
         android:id="@+id/txt_location"

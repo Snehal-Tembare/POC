@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import com.example.synerzip.poc.gcm.GCMActivity;
 import com.example.synerzip.poc.location.LocationActivity;
+import com.example.synerzip.poc.location.MyLocationDemoActivity;
 import com.example.synerzip.poc.preferences.PrefActivity;
 import com.example.synerzip.poc.services.ServiceMenuActivity;
 
@@ -81,6 +82,11 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btn_gcm)
     public void openGCMDemo(){
         startActivity(new Intent(this,GCMActivity.class));
+    }
+
+    @OnClick(R.id.btn_location_demo)
+    public void openLocation(){
+        startActivity(new Intent(this,MyLocationDemoActivity.class));
     }
 
 

@@ -29,6 +29,7 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import twitter4j.GeoLocation;
 
 public class LocationActivity extends Activity implements GoogleApiClient.OnConnectionFailedListener,
         GoogleApiClient.ConnectionCallbacks {
@@ -44,6 +45,9 @@ public class LocationActivity extends Activity implements GoogleApiClient.OnConn
 
     @BindView(R.id.edt_longitude)
     public EditText medtLongitude;
+
+    @BindView(R.id.edt_place)
+    public EditText mEdtPlace;
 
     private GoogleApiClient mClient;
     private double lattitude;
@@ -72,6 +76,25 @@ public class LocationActivity extends Activity implements GoogleApiClient.OnConn
         mClient.connect();
     }
 
+    @OnClick(R.id.btn_lat_long)
+    public void findByPlaceName(){
+        GeoLocation geoLocation;
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        try {
+            List<Address> addressList = geocoder.getFromLocationName(mEdtPlace.getText().toString(), 10);
+            Log.v("Address",addressList.toString());
+            Log.v("Feature ",addressList.get(0).getFeatureName()+"");
+            address = addressList.get(0).getAddressLine(0);
+            city = addressList.get(0).getLocality();
+            state = addressList.get(0).getAdminArea();
+            country = addressList.get(0).getCountryName();
+            postalCode = addressList.get(0).getPostalCode();
+            knownName = addressList.get(0).getFeatureName();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @OnClick(R.id.btn_find_location)
     public void findLocation() {
         lattitude = Double.parseDouble(mEdtLattitude.getText().toString());
@@ -90,7 +113,10 @@ public class LocationActivity extends Activity implements GoogleApiClient.OnConn
     private void findLocationOnMap(double lattitude, double longitude) {
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
         try {
-            List<Address> addressList = geocoder.getFromLocation(lattitude, longitude, 1);
+            List<Address> addressList = geocoder.getFromLocation(lattitude, longitude, 20);
+            Log.v("Address",addressList.toString());
+            Log.v("Feature ",addressList.get(0).getFeatureName()+"");
+
             address = addressList.get(0).getAddressLine(0);
             city = addressList.get(0).getLocality();
             state = addressList.get(0).getAdminArea();
